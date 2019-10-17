@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psychic Game</title>
+
+</head>
+<body>
+    <p>User Guess: <span id="uGuess"></span></p>
+    <p>Wins: <span id="win"></span></p>
+    <p>Losses: <span id="loss"></span></p>
+    <script>            
+        
+        var compuGuess = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+        
+        function reset(){
+            userSelectedGuess = 10;
+            rando = compuGuess[Math.floor(Math.random() * compuGuess.length)];
+        }
+
+        var userSelectedGuess = 10;
+        document.getElementById("uGuess").innerHTML = userSelectedGuess;
+
+        var wins = 0;
+        document.getElementById("win").innerHTML = wins;
+
+        var loss = 0;
+        document.getElementById("loss").innerHTML = loss;
+
+        var rando = compuGuess[Math.floor(Math.random() * compuGuess.length)];
+
+       document.onkeyup = function(event){
+           userSelectedGuess--;
+           document.getElementById("uGuess").innerHTML = userSelectedGuess;
+           var userGuess = event.key;
+
+           if(userSelectedGuess===0){
+               loss++;
+               document.getElementById("loss").innerHTML = loss;
+               reset();
+           }
+            if (rando === userGuess){
+                wins++;
+                document.getElementById("win").innerHTML = wins;
+               reset();
+           }
+
+        
+           console.log("Keypressed:" , userGuess);
+           
+        }
+    </script>
+    
+</body>
+</html>
