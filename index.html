@@ -8,9 +8,13 @@
 
 </head>
 <body>
-    <p>User Guess: <span id="uGuess"></span></p>
+    <h1>The Psychic Game</h1>
+    <h2>Guess what letter im thinking of.</h2>
+
+    <p>User Guesses left: <span id="uGuess"></span></p>
     <p>Wins: <span id="win"></span></p>
     <p>Losses: <span id="loss"></span></p>
+    <p>Guesses already picked: <span id="pickedGuesses"></span></p>
     <script>            
         
         var compuGuess = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
@@ -30,26 +34,32 @@
         var loss = 0;
         document.getElementById("loss").innerHTML = loss;
 
+        // var pickedGuesses = "";
+        // document.getElementById("pickedGuesses").innerHTML = pickedGuesses;
+
         var rando = compuGuess[Math.floor(Math.random() * compuGuess.length)];
 
        document.onkeyup = function(event){
            userSelectedGuess--;
            document.getElementById("uGuess").innerHTML = userSelectedGuess;
+        //    document.getElementById("pickedGuesses").innerHTML = pickedGuesses;
            var userGuess = event.key;
 
-           if(userSelectedGuess===0){
+           if(userSelectedGuess === 0){
                loss++;
                document.getElementById("loss").innerHTML = loss;
+                //alert ("You loss!!! HAHA!!");
                reset();
            }
             if (rando === userGuess){
                 wins++;
                 document.getElementById("win").innerHTML = wins;
+                // alert ("You win!!!!!");
                reset();
            }
 
         
-           console.log("Keypressed:" , userGuess);
+
            
         }
     </script>
